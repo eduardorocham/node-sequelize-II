@@ -1,11 +1,11 @@
-const dataSource = require('../models');
+const dataSource = require("../database/models");
 
 class Services {
   constructor(nomeDoModel) {
     this.model = nomeDoModel;
   }
 
-  async pegaTodosOsRegistros () {
+  async pegaTodosOsRegistros() {
     return dataSource[this.model].findAll();
   }
 
@@ -18,9 +18,12 @@ class Services {
   }
 
   async atualizaRegistro(dadosAtualizados, id) {
-    const listadeRegistrosAtualizados = await dataSource[this.model].update(dadosAtualizados, {
-      where: { id: id }
-    });
+    const listadeRegistrosAtualizados = await dataSource[this.model].update(
+      dadosAtualizados,
+      {
+        where: { id: id },
+      }
+    );
     if (listadeRegistrosAtualizados[0] === 0) {
       return false;
     }
