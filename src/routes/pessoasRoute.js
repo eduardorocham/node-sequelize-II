@@ -18,7 +18,10 @@ router.post("/pessoas", (req, res) => pessoaController.criaNovo(req, res));
 router.put("/pessoas/:id", (req, res) => pessoaController.atualiza(req, res));
 router.delete("/pessoas/:id", (req, res) => pessoaController.exclui(req, res));
 router.get("/pessoas/:estudanteId/matriculas", (req, res) =>
-  pessoaController.pegaMatriculas(req, res)
+  pessoaController.pegaMatriculasAtivas(req, res)
+);
+router.get("/pessoas/:estudanteId/matriculas/todos", (req, res) =>
+  pessoaController.pegaTodasAsMatriculas(req, res)
 );
 router.post("/pessoas/:estudanteId/matriculas", (req, res) =>
   matriculaController.criaNovo(req, res)
